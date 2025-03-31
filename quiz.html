@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Quiz | CareerExplorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+        body {
+            font-family: 'Comic Neue', cursive;
+        }
+        .quiz-bg {
+            background-image: url('https://images.pexels.com/photos/5905479/pexels-photo-5905479.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+        .progress-bar {
+            height: 10px;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-blue-50">
+    <!-- Navigation (same as index.html) -->
+    <nav class="bg-indigo-600 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold">CareerExplorer</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-yellow-200">Home</a>
+                <a href="quiz.html" class="hover:text-yellow-200">Quiz</a>
+                <a href="careers.html" class="hover:text-yellow-200">Careers</a>
+                <a href="resources.html" class="hover:text-yellow-200">Resources</a>
+            </div>
+            <button class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Quiz Container -->
+    <section class="py-12">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <!-- Quiz Header -->
+                <div class="quiz-bg text-white p-6">
+                    <h1 class="text-3xl font-bold mb-2">Career Explorer Quiz</h1>
+                    <p class="mb-4">Answer these fun questions to discover your perfect career match!</p>
+                    <div class="w-full bg-gray-200 rounded-full">
+                        <div id="progress" class="progress-bar bg-yellow-400 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <p id="progress-text" class="mt-2 text-sm">Question 1 of 5</p>
+                </div>
+
+                <!-- Quiz Questions -->
+                <div class="p-6">
+                    <div id="quiz-container">
+                        <!-- Questions will be inserted here by JavaScript -->
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex justify-between mt-6">
+                        <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg hidden">
+                            <i class="fas fa-arrow-left mr-2"></i> Previous
+                        </button>
+                        <button id="next-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-lg">
+                            Next <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="bg-indigo-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">© 2023 CareerExplorer for Kids. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 text-xl">
+                <a href="#" class="hover:text-yellow-200"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="hover:text-yellow-200"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-yellow-200"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
