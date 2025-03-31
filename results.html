@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Results | CareerExplorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+        body {
+            font-family: 'Comic Neue', cursive;
+        }
+        .result-bg {
+            background-image: url('https://images.pexels.com/photos/5905903/pexels-photo-5905903.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="bg-blue-50">
+    <!-- Navigation (same as index.html) -->
+    <nav class="bg-indigo-600 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold">CareerExplorer</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-yellow-200">Home</a>
+                <a href="quiz.html" class="hover:text-yellow-200">Quiz</a>
+                <a href="careers.html" class="hover:text-yellow-200">Careers</a>
+                <a href="resources.html" class="hover:text-yellow-200">Resources</a>
+            </div>
+            <button class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Results Section -->
+    <section class="result-bg min-h-[300px] flex items-center text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Your Career Match!</h1>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div id="result-content" class="text-center">
+                <!-- Results will be inserted here by JavaScript -->
+            </div>
+
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold mb-6 text-indigo-700">Recommended Careers For You</h3>
+                <div id="career-suggestions" class="grid md:grid-cols-3 gap-6">
+                    <!-- Career cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="careers.html" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-all">
+                    Explore All Careers <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="bg-indigo-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">© 2023 CareerExplorer for Kids. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 text-xl">
+                <a href="#" class="hover:text-yellow-200"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="hover:text-yellow-200"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-yellow-200"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Career database
+        const careers = {
+            creative: {
+                title: "Creative Careers",
+                description: "You're imaginative and artistic! You might enjoy careers where you can express your creativity and bring ideas to life.",
+                icon: "fas fa-palette",
+                color: "bg-purple-100 text-purple-800",
+                suggestions: [
+                    {
+                        title: "Graphic Designer",
+                        description: "Create visual concepts to communicate ideas.",
+                        icon: "fas fa-paint-brush"
+                    },
+                    {
+                        title: "Animator",
+                        description: "Bring characters and stories to life through animation.",
+                        icon: "fas fa-film"
+                    },
+                    {
+                        title: "Architect",
+                        description: "Design buildings and structures that are both functional and beautiful.",
+                        icon: "fas fa-building"
+                    }
+                ]
+            },
+            helping: {
+                title: "Helping Careers",
+                description: "You're caring and compassionate! You might enjoy careers where you can help people and make a difference in their lives.",
+                icon: "fas fa-hands-helping",
+                color: "bg-blue-100 text-blue-800",
+                suggestions: [
+                    {
+                        title: "Teacher",
+                        description: "Help students learn and grow in a classroom setting.",
+                        icon: "fas fa-chalkboard-teacher"
+                    },
+                    {
+                        title: "Doctor",
+                        description: "Take care of people's health and help them feel better.",
+                        icon: "fas fa-user-md"
+                    },
+                    {
+                        title: "Social Worker",
+                        description: "Help people solve and cope with problems in their lives.",
+                        icon: "fas fa-hands"
+                    }
+                ]
+            },
+            technical: {
+                title: "Technical Careers",
+                description: "You're logical and precise! You might enjoy careers where you can solve problems and work with technology.",
+                icon: "fas fa-laptop-code",
+                color: "bg-green-100 text-green-800",
+                suggestions: [
+                    {
+                        title: "Software Engineer",
+                        description: "Design and develop computer programs and applications.",
+                        icon: "fas fa-code"
+                    },
+                    {
+                        title: "Engineer",
+                        description: "Use science and math to solve technical problems.",
+                        icon: "fas fa-cogs"
+                    },
+                    {
+                        title: "Data Scientist",
+                        description: "Analyze and interpret complex data to help make decisions.",
+                        icon: "fas fa-chart-line"
+                    }
+                ]
+            },
+            scientific: {
+                title: "Scientific Careers",
+                description: "You're curious and observant! You might enjoy careers where you can explore and discover new things about the world.",
+                icon: "fas fa-flask",
+                color: "bg-yellow-100 text-yellow-800",
+                suggestions: [
+                    {
+                        title: "Biologist",
+                        description: "Study living organisms and their relationships to the environment.",
+                        icon: "fas fa-microscope"
+                    },
+                    {
+                        title: "Astronomer",
+                        description: "Study celestial objects and phenomena in space.",
+                        icon: "fas fa-star"
+                    },
+                    {
+                        title: "Environmental Scientist",
+                        description: "Protect the environment and human health.",
+                        icon: "fas fa-leaf"
+                    }
+                ]
+            }
+        };
+
+        // Display results when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const result = localStorage.getItem('quizResult');
+            const resultData = careers[result] || careers.creative;
+            const resultContent = document.getElementById('result-content');
+            const careerSuggestions = document.getElementById('career-suggestions');
+
+            // Create confetti effect
+            createConfetti();
+
+            // Display main result
+            resultContent.innerHTML = `
+                <div class="inline-block p-4 ${resultData.color} rounded-full text-4xl mb-4">
+                    <i class="${resultData.icon}"></i>
+                </div>
+                <h2 class="text-3xl font-bold mb-4">${resultData.title}</h2>
+                <p class="text-lg max-w-2xl mx-auto">${resultData.description}</p>
+            `;
+
+            // Display career suggestions
+            careerSuggestions.innerHTML = resultData.suggestions.map(career => `
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all">
+                    <div class="text-4xl ${resultData.color} p-3 rounded-full inline-block mb-4">
+                        <i class="${career.icon}"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">${career.title}</h4>
+                    <p>${career.description}</p>
+                </div>
+            `).join('');
+        });
+
+        // Simple confetti effect
+        function createConfetti() {
+            const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#FF9800', '#FF5722'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = -10 + 'px';
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                const animation = confetti.animate([
+                    { top: '-10px', opacity: 1 },
+                    { top: '100vh', opacity: 0 }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)',
+                    delay: Math.random() * 2000
+                });
+                
+                document.body.appendChild(confetti);
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+    </script>
+</body>
+</html>
