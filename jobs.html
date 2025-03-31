@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings | CareerExplorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+        body { font-family: 'Comic Neue', cursive; }
+    </style>
+</head>
+<body class="bg-blue-50">
+    <nav class="bg-indigo-600 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold">CareerExplorer</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-yellow-200">Home</a>
+                <a href="jobs.html" class="font-bold hover:text-yellow-200">Jobs</a>
+                <a href="premium.html" class="hover:text-yellow-200">Premium</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8 text-indigo-700">Current Job Openings</h1>
+        
+        <div id="job-listings" class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            <!-- Job listings will be loaded here -->
+        </div>
+    </main>
+
+    <script src="jobs-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
